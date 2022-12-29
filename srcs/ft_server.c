@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_server.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2022/12/29 12:29:35 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2022/12/29 12:46:45 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 	}
 	c |= (sig == SIGUSR2);
 	bit++;
-	ft_printf("bit=%d\n", bit);
+	if (bit == 8)
+		ft_printf("%c", c);
 	c <<= 1;
 	usleep(100);
 	kill(client_pid, SIGUSR2);

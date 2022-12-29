@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_client.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2022/12/29 12:30:10 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2022/12/29 12:51:40 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include <stdlib.h>
+
+void	ft_error(char *str)
+{
+	ft_printf("%s", str);
+	exit(EXIT_FAILURE);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -38,18 +45,46 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
+void	ft_char_to_binary(unsigned char c, int pid)
+{
+	int	bit;
+
+	bit = 0;
+	while (bit < 8)
+	{
+		if (c & 128)
+		{
+			if (kill(pid, SIGUSR2) == -1)
+				ft_error("Error sending signal");
+		}
+		else
+		{
+			if (kill(pid, SIGUSR1) == -1)
+				ft_error("Error sending signal");
+		}
+		c <<= 1;
+		bit++;
+		usleep(100);
+	}
+}
+
+void	ft_send_text(char *str, int pid)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		ft_char_to_binary(str[i++], pid);
+	ft_char_to_binary('\0', pid);
+}
+
 int	main(int argc, char **argv)
 {
 	int	pid;
-	int	res;
 
-	if (argc != 2)
+	if (argc != 3)
 		return (1);
 	pid = ft_atoi(argv[1]);
-	res = kill(pid, SIGUSR1);
-	if (res == 0)
-		ft_printf("Signal sent");
-	else
-		ft_printf("Error sending signal");
+	ft_send_text(argv[2], pid);
 	return (0);
 }
