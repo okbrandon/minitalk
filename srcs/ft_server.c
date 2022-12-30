@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_server.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2022/12/30 12:17:22 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2022/12/30 18:42:12 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,16 @@ void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 	(void) context;
 	if (!client_pid)
 	{
-		bit = 0;
-		c = 0;
 		client_pid = sinfo->si_pid;
-		ft_printf("[server] client_pid=%d\n", client_pid);
+		printf("[server] client_pid=%d\n", client_pid);
 	}
 	c += ((sig & 1) << bit);
 	bit++;
 	if (bit == 7)
 	{
-		ft_printf("%c", c);
-/* 		if (c == 0)
-			ft_printf("\n"); */
+		printf("%c", c);
+		if (c == 0)
+			printf("\n");
 		bit = 0;
 		c = 0;
 	}
@@ -50,7 +48,7 @@ int	main(void)
 	sigemptyset(&sact.sa_mask);
 	sact.sa_flags = SA_SIGINFO;
 	sact.sa_sigaction = ft_sig_handler;
-	ft_printf("[server] PID=%d\n", pid);
+	printf("[server] PID=%d\n", pid);
 	while (1)
 	{
 		sigaction(SIGUSR1, &sact, 0);
