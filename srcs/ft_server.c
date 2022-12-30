@@ -6,16 +6,17 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2022/12/29 12:46:45 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2022/12/30 12:17:22 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 {
-	static char	c;
+	static int	c;
 	static int	bit;
 	static int	client_pid;
 
@@ -27,13 +28,17 @@ void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 		client_pid = sinfo->si_pid;
 		ft_printf("[server] client_pid=%d\n", client_pid);
 	}
-	c |= (sig == SIGUSR2);
+	c += ((sig & 1) << bit);
 	bit++;
-	if (bit == 8)
+	if (bit == 7)
+	{
 		ft_printf("%c", c);
-	c <<= 1;
+/* 		if (c == 0)
+			ft_printf("\n"); */
+		bit = 0;
+		c = 0;
+	}
 	usleep(100);
-	kill(client_pid, SIGUSR2);
 }
 
 int	main(void)
