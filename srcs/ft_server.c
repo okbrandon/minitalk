@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/05 19:28:12 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/05 19:36:48 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,9 @@ void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 		client_pid = sinfo->si_pid;
 		ft_printf("[server] client_pid=%d\n", client_pid);
 	}
-	//c += ((sig & 1) << bit);
-	c |= sig == SIGUSR2;
+	c += ((sig & 1) << bit);
 	bit++;
-	if (bit < 8)
-		c <<= 1;
-	if (bit == 8)
+	if (bit == 7)
 	{
 		ft_printf("%c", c);
 		if (c == 0)

@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/05 19:19:45 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/05 19:39:09 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	ft_char_to_binary(char c, int pid)
 {
 	int	bit;
 
-	bit = 8;
-	while (bit--)
+	bit = 0;
+	while (bit < 7)
 	{
 		if ((c >> bit) & 1)
 		{
@@ -62,6 +62,7 @@ void	ft_char_to_binary(char c, int pid)
 			if (kill(pid, SIGUSR1) == -1)
 				ft_error("Error sending signal");
 		}
+		bit++;
 		usleep(300);
 	}
 }
