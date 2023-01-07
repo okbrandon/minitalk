@@ -3,19 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/29 09:27:04 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/01/05 11:18:15 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/01/07 10:18:28 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PURPLE				= \033[38;5;141m
-GREEN				= \033[38;5;46m
-RED					= \033[0;31m
-GREY				= \033[38;5;240m
-RESET				= \033[0m
-BOLD				= \033[1m
+# Colors constants
+PURPLE		= \033[38;5;141m
+GREEN		= \033[38;5;46m
+RED			= \033[0;31m
+GREY		= \033[38;5;240m
+RESET		= \033[0m
 
 NAME				= minitalk
 CLIENT				= client

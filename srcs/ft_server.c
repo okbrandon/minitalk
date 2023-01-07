@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/05 19:36:48 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/07 19:16:43 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 		bit = 0;
 		c = 0;
 	}
-	usleep(300);
 }
 
 int	main(void)
