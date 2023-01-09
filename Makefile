@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/29 09:27:04 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/01/07 10:18:28 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/01/09 19:13:44 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,12 @@ LIBFT_PRINTF_DIR	= ft_printf
 SRC_DIR				= ./srcs/
 SRC_SRV				= ft_server.c
 SRC_CLI				= ft_client.c
+SRCS				= ft_utils.c
 
 OBJ_DIR				= ./objs/
 OBJ_SRV				= ${addprefix ${OBJ_DIR}, ${SRC_SRV:.c=.o}}
 OBJ_CLI				= ${addprefix ${OBJ_DIR}, ${SRC_CLI:.c=.o}}
+OBJS				= ${addprefix ${OBJ_DIR}, ${SRCS:.c=.o}}
 
 RM					= rm -rf
 CC					= gcc
@@ -41,21 +43,23 @@ ${OBJ_DIR}%.o:	${SRC_DIR}%.c
 
 all:			${SERVER} ${CLIENT}
 
-${SERVER}:		${LIBFT_PRINTF} ${OBJ_SRV}
+${SERVER}:		${LIBFT_PRINTF} ${OBJS} ${OBJ_SRV}
 	@echo "${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Objects were made ${GREEN}successfully${RESET}.${GREY}"
 	@echo "${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Compiling project...${GREY}"
-	@${CC} ${CFLAGS} ${OBJ_SRV} -o ${SERVER} ${LIBFT_PRINTF}
+	@${CC} ${CFLAGS} ${OBJS} ${OBJ_SRV} -o ${SERVER} ${LIBFT_PRINTF}
 	@echo "${RESET}${GREY}────────────────────────────────────────────────────────────────────────────"
 	@echo "${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}Server${RESET} compiled ${GREEN}successfully${RESET}.${GREY}"
 	@echo "${RESET}${GREY}────────────────────────────────────────────────────────────────────────────"
 
-${CLIENT}:		${LIBFT_PRINTF} ${OBJ_CLI}
+${CLIENT}:		${LIBFT_PRINTF} ${OBJS} ${OBJ_CLI}
 	@echo "${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Objects were made ${GREEN}successfully${RESET}.${GREY}"
 	@echo "${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Compiling project...${GREY}"
-	@${CC} ${CFLAGS} ${OBJ_CLI} -o ${CLIENT} ${LIBFT_PRINTF}
+	@${CC} ${CFLAGS} ${OBJS} ${OBJ_CLI} -o ${CLIENT} ${LIBFT_PRINTF}
 	@echo "${RESET}${GREY}────────────────────────────────────────────────────────────────────────────"
 	@echo "${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}Client${RESET} compiled ${GREEN}successfully${RESET}.${GREY}"
 	@echo "${RESET}${GREY}────────────────────────────────────────────────────────────────────────────"
+
+${OBJS}:		| ${OBJ_DIR}
 
 ${OBJ_SRV}:		| ${OBJ_DIR}
 
@@ -75,7 +79,7 @@ clean:
 
 fclean:	clean
 	@make fclean -C ${LIBFT_PRINTF_DIR}
-	@${RM} ${SERVER} ${CLIENT}
+	@${RM} ${SERVER} ${CLIENT} ${SRCS}
 	@echo "${RESET}${GREY}────────────────────────────────────────────────────────────────────────────"
 	@echo "${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Project cleaned ${GREEN}successfully${RESET}.${GREY}"
 	@echo "${RESET}${GREY}────────────────────────────────────────────────────────────────────────────"

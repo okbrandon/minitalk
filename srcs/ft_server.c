@@ -6,13 +6,11 @@
 /*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/07 19:16:43 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/09 20:08:23 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 {
