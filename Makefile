@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/29 09:27:04 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/01/09 19:13:44 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/01/10 12:06:03 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ GREEN		= \033[38;5;46m
 RED			= \033[0;31m
 GREY		= \033[38;5;240m
 RESET		= \033[0m
+BOLD		= \033[1m
 
 NAME				= minitalk
 CLIENT				= client
