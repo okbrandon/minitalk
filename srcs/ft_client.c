@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/11 11:17:07 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:46:34 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ static void	ft_char_to_binary(char c, int pid)
 	int	bit;
 
 	bit = 0;
-	while (bit < 7)
+	while (bit < 8)
 	{
 		g_char_received = 0;
-		if ((c >> bit) & 1)
+		if (c & (128 >> bit))
 		{
 			if (kill(pid, SIGUSR2) == -1)
 				ft_error("An error occurred : signal can't be sent.");

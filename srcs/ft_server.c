@@ -6,16 +6,23 @@
 /*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/11 11:17:12 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:50:11 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
-void	ft_is_process_running(pid_t pid)
+static void	ft_is_process_running(pid_t pid)
 {
 	if (kill(pid, 0) == -1)
 		ft_error("An error occurred : the client is not answering...");
+}
+
+static void	ft_send_char(char c)
+{
+	ft_printf("%c", c);
+	if (c == 0)
+		ft_printf("\n");
 }
 
 void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
@@ -25,20 +32,22 @@ void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 	pid_t			client_pid;
 
 	(void) context;
+	if (!c)
+		c = 255;
 	client_pid = sinfo->si_pid;
 	ft_is_process_running(client_pid);
-	c += ((sig & 1) << bit);
+	if (sig == SIGUSR1)
+		c ^= (128 >> bit);
+	else if (sig == SIGUSR2)
+		c |= (128 >> bit);
 	bit++;
-	if (bit == 7)
+	if (bit == 8)
 	{
-		ft_printf("%c", c);
+		ft_send_char(c);
 		if (c == 0)
-		{
-			ft_printf("\n");
 			kill(client_pid, SIGUSR2);
-		}
 		bit = 0;
-		c = 0;
+		c = 255;
 	}
 	usleep(100);
 	kill(client_pid, SIGUSR1);
