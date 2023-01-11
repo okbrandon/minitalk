@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/29 09:27:04 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/01/11 11:18:06 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/01/11 12:21:24 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ ${SERVER}:		${LIBFT_PRINTF} ${OBJS} ${OBJ_SRV}
 	@echo "${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Compiling project...${GREY}"
 	@${CC} ${CFLAGS} ${OBJS} ${OBJ_SRV} -o ${SERVER} ${LIBFT_PRINTF}
 	@echo "${RESET}${GREY}────────────────────────────────────────────────────────────────────────────"
-	@echo "${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}Server${RESET} compiled ${GREEN}successfully${RESET}.${GREY}"
+	@echo "${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}Server${RESET} compiled ${GREEN}successfully${RESET}.${GREY}"
 	@echo "${RESET}${GREY}────────────────────────────────────────────────────────────────────────────"
 
 ${CLIENT}:		${LIBFT_PRINTF} ${OBJS} ${OBJ_CLI}
@@ -57,7 +57,7 @@ ${CLIENT}:		${LIBFT_PRINTF} ${OBJS} ${OBJ_CLI}
 	@echo "${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: Compiling project...${GREY}"
 	@${CC} ${CFLAGS} ${OBJS} ${OBJ_CLI} -o ${CLIENT} ${LIBFT_PRINTF}
 	@echo "${RESET}${GREY}────────────────────────────────────────────────────────────────────────────"
-	@echo "${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}Client${RESET} compiled ${GREEN}successfully${RESET}.${GREY}"
+	@echo "${RESET}${GREEN}»${RESET} [${PURPLE}${BOLD}${NAME}${RESET}]: ${RED}${BOLD}Client${RESET} compiled ${GREEN}successfully${RESET}.${GREY}"
 	@echo "${RESET}${GREY}────────────────────────────────────────────────────────────────────────────"
 
 ${OBJS}:		| ${OBJ_DIR}

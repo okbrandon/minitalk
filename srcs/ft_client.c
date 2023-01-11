@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/11 11:46:34 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:28:27 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,45 @@ static void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 		g_char_received = 1;
 	else if (sig == SIGUSR2)
 	{
-		ft_printf("[from %d] Successfully got your message!\n", sinfo->si_pid);
+		ft_printf("%s%s%d%s: %sSuccessfully %sgot your message! ✅\n",
+			PURPLE, BOLD, sinfo->si_pid, RESET, GREEN, RESET);
 		exit(EXIT_SUCCESS);
+	}
+}
+
+static void	ft_send_bit(char c, int bit, int pid)
+{
+	if (c & (128 >> bit))
+	{
+		if (kill(pid, SIGUSR2) == -1)
+			ft_error("signal can't be sent. ❌\n");
+	}
+	else
+	{
+		if (kill(pid, SIGUSR1) == -1)
+			ft_error("signal can't be sent. ❌\n");
 	}
 }
 
 static void	ft_char_to_binary(char c, int pid)
 {
 	int	bit;
+	int	time_out;
 
 	bit = 0;
+	time_out = 0;
 	while (bit < 8)
 	{
 		g_char_received = 0;
-		if (c & (128 >> bit))
-		{
-			if (kill(pid, SIGUSR2) == -1)
-				ft_error("An error occurred : signal can't be sent.");
-		}
-		else
-		{
-			if (kill(pid, SIGUSR1) == -1)
-				ft_error("An error occurred : signal can't be sent.");
-		}
+		ft_send_bit(c, bit, pid);
 		while (!g_char_received)
-			pause();
+		{
+			if (time_out >= 3)
+				ft_error("server did not respond in time. 💀\n");
+			time_out++;
+			sleep(1);
+		}
+		time_out = 0;
 		bit++;
 		usleep(100);
 	}
@@ -67,10 +81,10 @@ int	main(int argc, char **argv)
 	struct sigaction	sact;
 
 	if (argc != 3)
-		ft_error("Help : ./client <PID> <message>");
+		ft_error("incorrect usage! ./client <PID> <message> 📝\n");
 	pid = ft_atoi(argv[1]);
 	if (!pid)
-		ft_error("An error occurred : this pid is impossible.");
+		ft_error("this pid is impossible.\n");
 	sigemptyset(&sact.sa_mask);
 	sact.sa_flags = SA_SIGINFO;
 	sact.sa_sigaction = ft_sig_handler;

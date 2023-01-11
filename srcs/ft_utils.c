@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:06:28 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/11 11:17:24 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/11 12:25:48 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_error(char *str)
 {
-	ft_printf("%s", str);
+	ft_printf("%s%sAn error occurred :%s %s", RED, BOLD, RESET, str);
 	exit(EXIT_FAILURE);
 }
 
