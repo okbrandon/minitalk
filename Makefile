@@ -6,7 +6,7 @@
 #    By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/29 09:27:04 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/01/10 12:06:03 by bsoubaig         ###   ########.fr        #
+#    Updated: 2023/01/11 11:18:06 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,13 +22,13 @@ NAME				= minitalk
 CLIENT				= client
 SERVER				= server
 
-LIBFT_PRINTF		= ft_printf/libftprintf.a
-LIBFT_PRINTF_DIR	= ft_printf
-
 SRC_DIR				= ./srcs/
 SRC_SRV				= ft_server.c
 SRC_CLI				= ft_client.c
 SRCS				= ft_utils.c
+
+LIBFT_PRINTF		= ${SRC_DIR}ft_printf/libftprintf.a
+LIBFT_PRINTF_DIR	= ${SRC_DIR}ft_printf
 
 OBJ_DIR				= ./objs/
 OBJ_SRV				= ${addprefix ${OBJ_DIR}, ${SRC_SRV:.c=.o}}
@@ -37,7 +37,7 @@ OBJS				= ${addprefix ${OBJ_DIR}, ${SRCS:.c=.o}}
 
 RM					= rm -rf
 CC					= gcc
-CFLAGS				= -Wall -Wextra -Werror
+CFLAGS				= -Wall -Wextra -Werror -I ./includes/minitalk.h
 
 ${OBJ_DIR}%.o:	${SRC_DIR}%.c
 	@${CC} ${CFLAGS} -I${SRC_DIR} -c $< -o $@

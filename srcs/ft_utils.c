@@ -6,11 +6,11 @@
 /*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:06:28 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/10 18:27:21 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:17:24 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "../includes/minitalk.h"
 
 void	ft_error(char *str)
 {
