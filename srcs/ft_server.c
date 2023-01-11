@@ -6,12 +6,17 @@
 /*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/11 13:46:37 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:02:36 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
+/**
+ * @brief Function used to display the banner.
+ * 
+ * @param pid		The server pid
+ */
 static void	ft_display_banner(int pid)
 {
 	ft_printf("%s%s    __  ________   _______________    __    __ __\n",
@@ -28,6 +33,11 @@ static void	ft_display_banner(int pid)
 		RESET, GREY, GREEN, pid, GREY, RESET);
 }
 
+/**
+ * @brief Function used to print a character.
+ * 
+ * @param c			The character to print
+ */
 static void	ft_send_char(char c)
 {
 	ft_printf("%c", c);
@@ -35,6 +45,14 @@ static void	ft_send_char(char c)
 		ft_printf("\n");
 }
 
+/**
+ * @brief Function used to catch the signals received by
+ * the server from the client.
+ * 
+ * @param sig 		The signal received
+ * @param sinfo 	The different informations about the source
+ * @param context 	The context (ignored)
+ */
 void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 {
 	static int		c;
@@ -62,6 +80,9 @@ void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 	kill(client_pid, SIGUSR1);
 }
 
+/**
+ * @brief The main program of the server.
+ */
 int	main(void)
 {
 	int					pid;

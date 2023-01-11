@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/11 12:28:27 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:01:43 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 static int		g_char_received;
 
+/**
+ * @brief Function that catch the signals received by
+ * the client from the server.
+ * 
+ * @param sig 			The signal received
+ * @param sinfo 		The different informations about the source
+ * @param context 		The context (ignored)
+ */
 static void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 {
 	(void) context;
@@ -28,6 +36,15 @@ static void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 	}
 }
 
+/**
+ * @brief Function used to send a bit to the server
+ * according to a specific character.
+ * Using bitwise operator '>>' (shift right)
+ * 
+ * @param c 			The character to send
+ * @param bit 			How many moves to the right
+ * @param pid 			The pid of the server
+ */
 static void	ft_send_bit(char c, int bit, int pid)
 {
 	if (c & (128 >> bit))
@@ -42,6 +59,13 @@ static void	ft_send_bit(char c, int bit, int pid)
 	}
 }
 
+/**
+ * @brief Function used to convert a character from
+ * ASCII to Binary and send it to a pid.
+ * 
+ * @param c 			The character to convert
+ * @param pid 			the pid of the server
+ */
 static void	ft_char_to_binary(char c, int pid)
 {
 	int	bit;
@@ -66,6 +90,14 @@ static void	ft_char_to_binary(char c, int pid)
 	}
 }
 
+/**
+ * @brief Function used to send a whole char array
+ * to a specific pid.
+ * 
+ * @param str 			The char array to send
+ * @param len 			The length of the char array
+ * @param pid 			The pid of the server
+ */
 static void	ft_send_text(char *str, int len, int pid)
 {
 	int	i;
@@ -75,6 +107,9 @@ static void	ft_send_text(char *str, int len, int pid)
 		ft_char_to_binary(str[i++], pid);
 }
 
+/**
+ * @brief The main program of the client.
+ */
 int	main(int argc, char **argv)
 {
 	int					pid;
