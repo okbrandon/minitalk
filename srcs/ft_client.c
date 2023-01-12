@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/11 16:01:43 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:54:24 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static int		g_char_received;
 static void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 {
 	(void) context;
-	(void) sinfo;
 	if (sig == SIGUSR1)
 		g_char_received = 1;
 	else if (sig == SIGUSR2)
