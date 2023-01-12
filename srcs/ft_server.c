@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/12 09:45:31 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:19:12 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ static void	ft_display_banner(int pid)
 {
 	ft_printf("%s%s    __  ________   _______________    __    __ __\n",
 		PURPLE, BOLD);
-	ft_printf("%s   /  |/  /  _/ | / /  _/_  __/   |  / /   / //_/\n",
+	ft_printf("%s%s   /  |/  /  _/ | / /  _/_  __/   |  / /   / //_/\n",
 		PURPLE, BOLD);
-	ft_printf("%s  / /|_/ // //  |/ // /  / / / /| | / /   / ,<\n",
+	ft_printf("%s%s  / /|_/ // //  |/ // /  / / / /| | / /   / ,<\n",
 		PURPLE, BOLD);
-	ft_printf("%s / /  / // // /|  // /  / / / ___ |/ /___/ /| |\n",
+	ft_printf("%s%s / /  / // // /|  // /  / / / ___ |/ /___/ /| |\n",
 		PURPLE, BOLD);
-	ft_printf("%s/_/  /_/___/_/ |_/___/ /_/ /_/  |_/_____/_/ |_|\n",
+	ft_printf("%s%s/_/  /_/___/_/ |_/___/ /_/ /_/  |_/_____/_/ |_|\n",
 		PURPLE, BOLD);
-	ft_printf("%s               %s»» PID: %s%d%s ««%s\n\n",
-		RESET, GREY, GREEN, pid, GREY, RESET);
+	ft_printf("%s               %s»» PID: %s%s%d%s%s ««%s\n\n",
+		RESET, GREY, GREEN, BOLD, pid, RESET, GREY, RESET);
 }
 
 /**
