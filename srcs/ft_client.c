@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_client.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/12 12:54:24 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2023/01/16 23:17:35 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
+/**
+ * @brief Global variable used to know if the client
+ * received a signal from the server.
+ * The server will send a SIGUSR1 signal to the client
+ *  if it received the bit correctly.
+ * The server will send a SIGUSR2 signal to the client
+ *  if it received the whole string correctly.
+ */
 static int		g_char_received;
 
 /**
