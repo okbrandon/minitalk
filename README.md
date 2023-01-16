@@ -1,5 +1,3 @@
-# minitalk
-
 <h1 align="center">📣 minitalk</h1>
 
 <p align="center">
@@ -7,7 +5,7 @@
 </p>
 
 <p align="center">
-	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/okbrandon/minitalk?color=blueviolet"/>
+	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/okbrandon/minitalk?color=success"/>
 	<img alt="Norminette run" src="https://github.com/okbrandon/minitalk/actions/workflows/42-norminette.yml/badge.svg"/>
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/okbrandon/minitalk"/>
 </p>
@@ -77,12 +75,12 @@ $> ./client 8285 "Hello World!"
 Terminal 1:
 ```sh
 $> ./server
-	__  ________   _______________    __    __ __
+    __  ________   _______________    __    __ __
    /  |/  /  _/ | / /  _/_  __/   |  / /   / //_/
   / /|_/ // //  |/ // /  / / / /| | / /   / ,<
  / /  / // // /|  // /  / / / ___ |/ /___/ /| |
 /_/  /_/___/_/ |_/___/ /_/ /_/  |_/_____/_/ |_|
-			   »» PID: 8285 ««
+               »» PID: 8285 ««
 
 Hello World!
 ```
