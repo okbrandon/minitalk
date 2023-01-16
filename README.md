@@ -87,7 +87,8 @@ Hello World!
 
 Terminal 2:
 ```sh
-$> 8285: Successfully got your message! ✅
+$> ./client 8285 "Hello World!"
+8285: Successfully got your message! ✅
 ```
 
 [⬆ Back to Top](#-table-of-contents)
