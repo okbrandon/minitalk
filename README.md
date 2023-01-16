@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/okbrandon/minitalk?color=success"/>
+	<img alt="Top used language" src="https://img.shields.io/github/languages/top/okbrandon/minitalk?color=success"/>
 	<img alt="Norminette run" src="https://github.com/okbrandon/minitalk/actions/workflows/42-norminette.yml/badge.svg"/>
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/okbrandon/minitalk"/>
 </p>
