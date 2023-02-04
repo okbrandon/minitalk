@@ -93,6 +93,6 @@ $> ./client 8285 "Hello World!"
 
 [⬆ Back to Top](#-table-of-contents)
 
-## 📝 Meta
+## 🌏 Meta
 
 bsoubaig – bsoubaig@student.42nice.fr
