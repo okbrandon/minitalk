@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:06:28 by bsoubaig          #+#    #+#             */
-/*   Updated: 2025/04/11 16:49:52 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2025/04/11 16:57:24 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,14 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
+/**
+ * @brief Function used to join two char arrays and prevent
+ * memory leaks.
+ *
+ * @param s1			The first char array
+ * @param s2			The second char array
+ * @return char* 		The joined char array
+ */
 char	*ft_free_to_join(char *s1, char *s2)
 {
 	char	*str;
