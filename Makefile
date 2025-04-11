@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bsoubaig <bsoubaig@student.42.fr>          +#+  +:+       +#+         #
+#    By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/29 09:27:04 by bsoubaig          #+#    #+#              #
-#    Updated: 2023/01/11 12:21:24 by bsoubaig         ###   ########.fr        #
+#    Updated: 2025/04/11 16:48:18 by bsoubaig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJ_CLI				= ${addprefix ${OBJ_DIR}, ${SRC_CLI:.c=.o}}
 OBJS				= ${addprefix ${OBJ_DIR}, ${SRCS:.c=.o}}
 
 RM					= rm -rf
-CC					= gcc
+CC					= cc
 CFLAGS				= -Wall -Wextra -Werror -I ./includes/minitalk.h
 
 ${OBJ_DIR}%.o:	${SRC_DIR}%.c
@@ -87,5 +87,5 @@ fclean:	clean
 
 re:	fclean all
 
-.SILENT: all clean fclean re 
+.SILENT: all clean fclean re
 .PHONY:	all clean fclean re
