@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 10:13:00 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/15 18:25:38 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2025/04/11 16:51:01 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /**
  * @brief Function used to display the banner.
- * 
+ *
  * @param pid		The server pid
  */
 static void	ft_display_banner(int pid)
@@ -36,36 +36,34 @@ static void	ft_display_banner(int pid)
 /**
  * @brief Function used to store the received character
  * in a string and print it when the end of the message
- * 
+ *
  * @param c			The character to store
  */
 static void	ft_send_char(char c)
 {
 	static char	*str;
-	char		*tmp;
+	char		tmp[2];
 
 	if (!str)
 	{
 		str = malloc(1);
 		*str = '\0';
 	}
-	tmp = malloc(2);
-	*tmp = c;
-	*(tmp + 1) = '\0';
-	str = ft_strjoin(str, tmp);
+	tmp[0] = c;
+	tmp[1] = '\0';
+	str = ft_free_to_join(str, tmp);
 	if (c == 0)
 	{
 		ft_printf("%s\n", str);
 		free(str);
 		str = NULL;
 	}
-	free(tmp);
 }
 
 /**
  * @brief Function used to catch the signals received by
  * the server from the client.
- * 
+ *
  * @param sig 		The signal received
  * @param sinfo 	The different informations about the source
  * @param context 	The context (ignored)

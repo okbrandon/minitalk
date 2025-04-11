@@ -6,7 +6,7 @@
 /*   By: bsoubaig <bsoubaig@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 19:06:28 by bsoubaig          #+#    #+#             */
-/*   Updated: 2023/01/15 18:25:56 by bsoubaig         ###   ########.fr       */
+/*   Updated: 2025/04/11 16:49:52 by bsoubaig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /**
  * @brief Function used to print a basic error message
  * then exit the program with a failure.
- * 
+ *
  * @param str 			The message to display
  */
 void	ft_error(char *str)
@@ -27,7 +27,7 @@ void	ft_error(char *str)
 /**
  * @brief Basic function used to return the length of
  * a char array.
- * 
+ *
  * @param str 			The char array
  * @return int 			The length of the char array
  */
@@ -43,7 +43,7 @@ int	ft_strlen(char *str)
 
 /**
  * @brief Basic implementation of ft_atoi from libft.
- * 
+ *
  * @param str 			The char array containing a number
  * @return int 			The extracted number
  */
@@ -66,7 +66,7 @@ int	ft_atoi(const char *str)
 
 /**
  * @brief Basic implementation of ft_strjoin from libft.
- * 
+ *
  * @param s1			The first char array
  * @param s2			The second char array
  * @return char* 		The joined char array
@@ -95,5 +95,19 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	str[i + j] = '\0';
+	return (str);
+}
+
+char	*ft_free_to_join(char *s1, char *s2)
+{
+	char	*str;
+
+	if (!s1)
+	{
+		s1 = (char *) malloc(1);
+		s1[0] = '\0';
+	}
+	str = ft_strjoin(s1, s2);
+	free(s1);
 	return (str);
 }
